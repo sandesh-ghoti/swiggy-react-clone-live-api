@@ -1,13 +1,43 @@
 import React from "react";
-import Hello from "./components/Hello";
-
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  About,
+  Cart,
+  Instamart,
+  Body,
+  Header,
+  Footer,
+  Card,
+  Error,
+} from "./components/index";
+import store from "./utils/store";
+import { Provider } from "react-redux";
 const App = () => {
   return (
-    <div className="font-bold text-6xl">
-      custom App
-      <Hello />
-    </div>
+    <Provider store={store}>
+      <div>
+        <RouterProvider router={router} />
+      </div>
+    </Provider>
   );
 };
-
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: (
+      <div>
+        <Header />
+        <Body />
+        <Footer />
+      </div>
+    ),
+    errorElement: <Error />,
+    children: [
+      { path: "/", element: <Card /> },
+      { path: "/about", element: <About /> },
+      { path: "/cart", element: <Cart /> },
+      { path: "/instamart", element: <Instamart /> },
+    ],
+  },
+]);
 export default App;

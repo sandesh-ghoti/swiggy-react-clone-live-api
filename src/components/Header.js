@@ -3,6 +3,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { TiThMenu } from "react-icons/ti";
 import { FaUserCircle } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
+import { CiSearch } from "react-icons/ci";
 const Header = () => {
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -10,7 +11,7 @@ const Header = () => {
     setIsMenuOpen(!isMenuOpen);
   }
   return (
-    <div className="font-bold flex flex-col h-18 shadow-gray-light shadow-sm justify-between md:flex-row md:items-center">
+    <nav className="font-bold flex flex-col h-18 shadow-gray-light shadow-sm justify-between md:flex-row md:items-center">
       <div className="flex flex-row justify-between items-center">
         <div className="flex flex-row items-center">
           <div
@@ -55,34 +56,51 @@ const Header = () => {
 
       <div className={(isMenuOpen ? "block" : "hidden") + " " + "md:block"}>
         <ul className="flex flex-col items-center md:flex-row">
-          <NavLink to={"/cart"} onClick={toggelMenu}>
-            <li className=" font-normal text-lg block px-2 w-full border-b border-gray-light text-center md:border-none">
-              Cart
-            </li>
-          </NavLink>
           <NavLink to={"/search"} onClick={toggelMenu}>
-            <li className=" font-normal text-lg block px-2 w-full border-b border-gray-light text-center md:border-none">
-              🔍
+            <li className=" font-normal text-lg block px-2 w-full border-b active:text-orange border-gray-light text-center md:border-none">
+              <CiSearch />
             </li>
           </NavLink>
-          <NavLink to={"/about"} onClick={toggelMenu}>
-            <li className=" font-normal text-lg block px-2 w-full border-b border-gray-light text-center md:border-none">
+
+          <li>
+            <NavLink
+              to={"/about"}
+              onClick={toggelMenu}
+              className="font-normal text-lg block px-2 w-full border-b border-gray-light text-center md:border-none"
+            >
               About
-            </li>
-          </NavLink>
-          <NavLink to={"/instamart"} onClick={toggelMenu}>
-            <li className=" font-normal text-lg block px-2 w-full border-b border-gray-light text-center md:border-none">
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to={"/instamart"}
+              onClick={toggelMenu}
+              className="font-normal text-lg block px-2 w-full border-b border-gray-light text-center md:border-none"
+            >
               Instamart
-            </li>
-          </NavLink>
-          <NavLink to={"/login"} onClick={toggelMenu}>
-            <li className=" font-normal text-lg block px-2 w-full border-b border-gray-light text-center md:border-none items-center">
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to={"/cart"}
+              onClick={toggelMenu}
+              className="font-normal text-lg block px-2 w-full border-b border-gray-light text-center md:border-none"
+            >
+              Cart
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to={"/login"}
+              onClick={toggelMenu}
+              className="font-normal text-lg block px-2 w-full border-b border-gray-light text-center md:border-none"
+            >
               <FaUserCircle className="inline md:block" />
-            </li>
-          </NavLink>
+            </NavLink>
+          </li>
         </ul>
       </div>
-    </div>
+    </nav>
   );
 };
 

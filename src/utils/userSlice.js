@@ -6,6 +6,7 @@ const userSlice = createSlice({
     coordinates: { lat: "28.461384", lng: "77.048541" },
     name: "John Doe",
     email: "john@example.com",
+    isLoggedIn: false,
   },
   reducers: {
     setName: (state, action) => {
@@ -16,6 +17,9 @@ const userSlice = createSlice({
     },
     setCoordinates: (state, action) => {
       state.coordinates = action.payload;
+    },
+    setIsLoggedIn: (state, action) => {
+      state.isLoggedIn = action.payload;
     },
   },
 });

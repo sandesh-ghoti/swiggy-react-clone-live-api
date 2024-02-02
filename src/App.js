@@ -12,6 +12,7 @@ import {
 } from "./components/index";
 import store from "./utils/store";
 import { Provider } from "react-redux";
+import MainPage from "./components/MainPage";
 const App = () => {
   return (
     <Provider store={store}>
@@ -33,7 +34,7 @@ const router = createBrowserRouter([
     ),
     errorElement: <Error />,
     children: [
-      { path: "/", element: <Card /> },
+      { path: "/", element: <MainPage /> },
       { path: "/about", element: <About /> },
       { path: "/cart", element: <Cart /> },
       { path: "/instamart", element: <Instamart /> },

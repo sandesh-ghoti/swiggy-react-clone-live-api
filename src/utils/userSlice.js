@@ -7,6 +7,7 @@ const userSlice = createSlice({
     name: "John Doe",
     email: "john@example.com",
     isLoggedIn: false,
+    csrfToken: null,
   },
   reducers: {
     setName: (state, action) => {
@@ -21,9 +22,18 @@ const userSlice = createSlice({
     setIsLoggedIn: (state, action) => {
       state.isLoggedIn = action.payload;
     },
+    setCsrfToken: (state, action) => {
+      state.csrfToken = action.payload;
+    },
   },
 });
 
-export const { setName, setEmail, setCoordinates } = userSlice.actions;
+export const {
+  setName,
+  setEmail,
+  setCoordinates,
+  setIsLoggedIn,
+  setCsrfToken,
+} = userSlice.actions;
 
 export default userSlice.reducer;

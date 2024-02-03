@@ -12,14 +12,14 @@ const MainPage = () => {
 
   const req1 = async (url) => {
     try {
-      const response = await fetch(url, {
-        method: "GET",
-      });
+      const response = await fetch(
+        "https://corsproxy.org/?" + encodeURIComponent(url)
+      );
       if (response.ok) {
-        const jsonData = await response.json();
+        jsonData = await response.json();
         setData([
           ...data,
-          ...jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+          ...jsonData?.data.cards[4]?.card?.card?.gridElements?.infoWithStyle
             ?.restaurants,
         ]);
       } else {
